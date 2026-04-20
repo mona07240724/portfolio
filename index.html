@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monami Kudo | Portfolio</title>
+
+  <!-- Google Fonts: Cormorant Garamond（見出し用）と Noto Sans JP（日本語本文用） -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- CSSファイルを読み込む（linkタグ = 外部ファイルを接続するタグ） -->
+  <!-- rel="stylesheet"（リレーション：スタイルシート） = このファイルはCSS（見た目の設定）ですよ、という意味 -->
+  <!-- href="style.css"（エイチレフ） = 読み込むファイルのパス（同じフォルダ内のstyle.css） -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- ============================================
+       ヘッダー
+       ============================================ -->
+  <header class="header" id="header">
+    <!-- ロゴ -->
+    <a href="#" class="header__logo">Monami Kudo</a>
+
+    <!-- PC用ナビゲーション -->
+    <nav class="header__nav">
+      <a href="#works">WORKS</a>
+      <a href="#profile">PROFILE</a>
+      <a href="#contact" class="header__contact-btn">CONTACT</a>
+    </nav>
+
+    <!-- ハンバーガーボタン（スマホ用） -->
+    <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <!-- モバイルメニュー（ハンバーガーメニューの中身） -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#works" class="mobile-menu__link">WORKS</a>
+    <a href="#profile" class="mobile-menu__link">PROFILE</a>
+    <a href="#contact" class="mobile-menu__contact">CONTACT</a>
+  </div>
+
+  <!-- ============================================
+       ヒーローセクション（メインビジュアル）
+       ============================================ -->
+  <section class="hero">
+    <!-- 背景（後で画像に差し替え可能） -->
+    <div class="hero__bg">
+    <img src="images/girl-ran.jpeg" alt="Hero Image" class="hero__img"> <!-- 画像がある場合はこちらを使う -->
+    </div>
+    <!-- 暗いオーバーレイ -->
+    <div class="hero__overlay"></div>
+    <!-- キャッチコピー -->
+    <div class="hero__content">
+      <p class="hero__subtitle">PERSONAL WORKS</p>
+      <h1 class="hero__title">Design that<br>moves people.</h1>
+      <p class="hero__text">デザインが、誰かの力になれる。</p>
+      <div class="hero__line"></div>
+    </div>
+    <p class="hero__vertical-text">Web Designer — Osaka, Japan</p>
+  </section>
+
+  <!-- ============================================
+       Worksセクション（作品一覧）
+       ============================================ -->
+  <section class="section works" id="works">
+    <div class="section__inner">
+      <div class="fade-in">
+        <p class="section__label">Selected Works</p>
+        <h2 class="section__title">Works</h2>
+      </div>
+
+      <!-- 作品グリッド（3列 x 2行 = 6作品） -->
+      <div class="works__grid">
+
+        <!-- 作品1 -->
+        <a href="branding.html" class="work-card fade-in">
+          <!-- ↓ 画像がある場合はこちらを使う -->
+              <img src="images/branding-button.png" alt="Work 1 Image " class="work-card__img">
+          <div class="work-card__overlay">
+            <p class="work-card__category">Branding</p>
+            <p class="work-card__desc">葡萄ヶ丘ワイナリー ― ロゴ・名刺・LP・SNS・バナー</p>
+            <span class="work-card__link">View Project →</span>
+          </div>
+        </a>
+
+        <!-- 作品2 -->
+        <a href="work-banner.html" class="work-card fade-in">
+               <img src="images/summer-sail.png" alt="Work 2 Image " class="work-card__img">
+          <div class="work-card__overlay">
+            <p class="work-card__category">Banner</p>
+            <p class="work-card__desc">バナーデザイン</p>
+            <span class="work-card__link">View Project →</span>
+          </div>
+        </a>
+
+        <!-- 作品3 -->
+        <a href="work-lp.html" class="work-card fade-in">
+            <img src="images/lp-button.png" alt="Work 3 Image " class="work-card__img">
+          <div class="work-card__overlay">
+            <p class="work-card__category">LP</p>
+            <p class="work-card__desc">ランディングページデザイン</p>
+            <span class="work-card__link">View Project →</span>
+          </div>
+        </a>
+
+        <!-- 作品4 -->
+        <a href="work-card.html" class="work-card fade-in">
+               <img src="images/meisi-button.png" alt="Work 4 Image " class="work-card__img">
+          <div class="work-card__overlay">
+            <p class="work-card__category">Business Card</p>
+            <p class="work-card__desc">名刺デザイン</p>
+            <span class="work-card__link">View Project →</span>
+          </div>
+        </a>
+
+        <!-- 作品5 -->
+        <a href="work-sns.html" class="work-card fade-in">
+               <img src="images/sns-button.png" alt="Work 5 Image " class="work-card__img">
+          <div class="work-card__overlay">
+            <p class="work-card__category">SNS</p>
+            <p class="work-card__desc">SNS投稿デザイン</p>
+            <span class="work-card__link">View Project →</span>
+          </div>
+        </a>
+
+        <!-- 作品6 -->
+        <a href="work-thumbnail.html" class="work-card fade-in">
+                <img src="images/thumbnail-button.png" alt="Work 6 Image " class="work-card__img">
+          <div class="work-card__overlay">
+            <p class="work-card__category">thumbnail</p>
+            <p class="work-card__desc">サムネイルデザイン</p>
+            <span class="work-card__link">View Project →</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       Profileセクション
+       ============================================ -->
+  <section class="section profile" id="profile">
+    <div class="section__inner">
+      <div class="fade-in">
+        <p class="section__label">About Me</p>
+        <h2 class="section__title">Profile</h2>
+      </div>
+
+      <div class="profile__content fade-in">
+        <!-- 左：プロフィール写真 -->
+        <div class="profile__image-wrapper">
+          <!-- ↓ 画像がある場合はこちらを使う -->
+          <img src="images/icon.jpg" alt="Monami Kudo" class="profile__image">
+        </div>
+
+        <!-- 右：テキスト -->
+        <div class="profile__text">
+          <h3 class="profile__name">Monami<br>Kudo</h3>
+          <p class="profile__name-jp">工藤 萌菜美</p>
+
+          <div class="profile__bio">
+            <p>1996年、大阪生まれ。</p>
+            <p>学生時代は吹奏楽や軽音楽に没頭し、一つの表現を突き詰める奥深さを学びました。事務職、ネイル業界、そして在宅でのライティング業務など、多様なキャリアを歩んできましたが、その根底には常に「誰かの想いを形にする」ことへの純粋な喜びがありました。</p>
+            <p>幼少期から憧れ続けたWebデザインの世界。頭の中に描いたレイアウトが画面上で形を成していく瞬間は、何物にも代えがたい高揚感があります。</p>
+            <p>現在は、ネイル業界で磨かれた繊細な色彩センスと、事務・在宅ワークで培った正確な作業スキルを武器に制作に励んでいます。クライアント様が思い描く理想を、それ以上の形として具現化すること。デザインを通じて社会に貢献し、誰かの心に深く届く体験を届けていきたいと考えています。</p>
+          </div>
+
+          <p class="profile__tools-label">Design Tools</p>
+          <div class="profile__tools">
+            <span class="profile__tool-tag">Illustrator</span>
+            <span class="profile__tool-tag">Photoshop</span>
+            <span class="profile__tool-tag">Figma</span>
+            <span class="profile__tool-tag">Canva</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       My Strengthsセクション
+       ============================================ -->
+  <section class="section strengths" id="strengths">
+    <div class="section__inner">
+      <div class="fade-in">
+        <p class="section__label">Why Choose Me</p>
+        <h2 class="section__title">My Strengths</h2>
+      </div>
+
+      <div class="strengths__grid">
+        <!-- 強み1 -->
+        <div class="strength-card fade-in">
+          <p class="strength-card__number">01</p>
+          <h3 class="strength-card__title">Same-day Reply</h3>
+          <p class="strength-card__text">お問い合わせには当日中にご返信。子育て中でも納期・コミュニケーションを最優先に、安心してお任せいただける環境を整えています。</p>
+        </div>
+
+        <!-- 強み2 -->
+        <div class="strength-card fade-in">
+          <p class="strength-card__number">02</p>
+          <h3 class="strength-card__title">Refined Color Sense</h3>
+          <p class="strength-card__text">ネイル業界で磨かれた繊細な色彩感覚を武器に、ブランドの世界観にぴったり寄り添う配色をご提案します。</p>
+        </div>
+
+        <!-- 強み3 -->
+        <div class="strength-card fade-in">
+          <p class="strength-card__number">03</p>
+          <h3 class="strength-card__title">Branding in Detail</h3>
+          <p class="strength-card__text">ロゴ・名刺・LP・SNS・バナーまで、一貫したブランドデザインに対応。単発のご依頼からトータルサポートまでお任せください。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       CTAセクション（お問い合わせ誘導）
+       ============================================ -->
+  <section class="cta" id="contact">
+    <p class="cta__label fade-in">Get in Touch</p>
+    <h2 class="cta__title fade-in">Let's work<br>together.</h2>
+    <p class="cta__text fade-in">お仕事のご相談・ご質問はお気軽にどうぞ。</p>
+    <a href="contact.html" class="cta__button fade-in">
+      CONTACT 相談
+      <span class="cta__button-arrow">→</span>
+    </a>
+  </section>
+
+  <!-- ============================================
+       フッター
+       ============================================ -->
+  <footer class="footer">
+    <span class="footer__logo">Monami Kudo</span>
+    <span class="footer__copy">© 2025 Monami Kudo. All rights reserved.</span>
+  </footer>
+
+  <!-- JavaScriptファイルを読み込む -->
+  <!-- src="script.js"（ソース） = 読み込むファイルのパス（同じフォルダ内のscript.js） -->
+  <!-- defer（ディファー） = HTMLの読み込みが完了してからJSを実行する、という指示 -->
+  <script src="script.js" defer></script>
+</body>
+</html>

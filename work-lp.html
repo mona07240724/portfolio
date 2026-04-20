@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LP | Monami Kudo Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="work-lp.css">
+</head>
+
+<body>
+
+  <!-- ============================================
+       ヘッダー
+       ============================================ -->
+  <header class="header" id="header">
+    <a href="index.html" class="header__logo">Monami Kudo</a>
+
+    <nav class="header__nav">
+      <a href="index.html#works">WORKS</a>
+      <a href="index.html#profile">PROFILE</a>
+      <a href="index.html#contact" class="header__contact-btn">CONTACT</a>
+    </nav>
+
+    <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <!-- モバイルメニュー -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html#works" class="mobile-menu__link">WORKS</a>
+    <a href="index.html#profile" class="mobile-menu__link">PROFILE</a>
+    <a href="index.html#contact">CONTACT</a>
+  </div>
+
+  <!-- ============================================
+       ページタイトルエリア
+       ============================================ -->
+  <div class="page-hero fade-in">
+    <p class="page-hero__label">Landing Page</p>
+    <h1 class="page-hero__title">LP Design</h1>
+    <p class="page-hero__client">Original Works — 2025</p>
+    <p class="page-hero__desc">架空のクライアントを想定したランディングページの制作実績です。FigmaでデスクトップとSP両方のデザインを制作した後、HTML / CSSで実装まで行っています。</p>
+    <div class="page-hero__divider"></div>
+  </div>
+
+  <!-- ============================================
+       作品01：HabiTodo LP
+       ============================================ -->
+  <div class="work-section fade-in">
+    <p class="work-section__label">01</p>
+    <h2 class="work-section__title">App LP — HabiTodo</h2>
+    <p class="work-section__text">「三日坊主を卒業したい」20〜30代向けの習慣トラッカー＋ToDoアプリ「HabiTodo」の架空LPです。続けることへの前向きなエネルギーを伝えるため、オレンジとグリーンの明るい配色を採用。モックアップ画像やユーザーイラストを活用し、使用イメージが直感的に伝わるレイアウトを意識しました。デスクトップ・スマホ両対応のレスポンシブデザインで制作しています。</p>
+    <div class="work-section__tools">
+      <span class="work-section__tool-tag">Figma</span>
+      <span class="work-section__tool-tag">Photoshop</span>
+      <span class="work-section__tool-tag">HTML / CSS</span>
+    </div>
+
+   <div class="work-section__images lp-grid">
+      <!-- 画像が用意できたら下のコメントを外して使う -->
+      <img src="images/lp-d.png" alt="HabiTodo LP" class="work-section__img">
+      <img src="images/lp-s.png" alt="HabiTodo LP SP" class="work-section__img">
+    </div>
+
+    <a href="https://mona07240724.github.io/habitodo-lp/" target="_blank" class="work-section__link-btn">
+      View Live Site →
+    </a>
+  </div>
+
+  <!-- ============================================
+       関連作品：ワイナリーLP（小さく掲載）
+       ============================================ -->
+  <div class="work-section work-section--related fade-in">
+    <p class="work-section__related-label">Related Work</p>
+    <p class="work-section__related-text">ブランディング一式の一部として制作したワイナリーのLP。詳細はBrandingページへ。</p>
+    <a href="branding.html" class="work-section__link-btn">
+      View Branding →
+    </a>
+  </div>
+
+  <!-- ============================================
+       ホームに戻るセクション
+       ============================================ -->
+  <div class="back-section fade-in">
+    <p class="back-section__text">Portfolio</p>
+    <h2 class="back-section__title">Back to Works</h2>
+    <a href="index.html#works" class="back-btn">
+      <span class="back-btn__arrow">←</span>
+      ホームに戻る
+    </a>
+  </div>
+
+  <!-- フッター -->
+  <footer class="footer">
+    <span class="footer__logo">Monami Kudo</span>
+    <span class="footer__copy">© 2025 Monami Kudo. All rights reserved.</span>
+  </footer>
+
+  <script src="work-lp.js" defer></script>
+
+</body>
+</html>

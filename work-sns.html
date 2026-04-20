@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SNS | Monami Kudo Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="work-sns.css">
+</head>
+
+<body>
+
+  <!-- ============================================
+       ヘッダー
+       ============================================ -->
+  <header class="header" id="header">
+    <a href="index.html" class="header__logo">Monami Kudo</a>
+
+    <nav class="header__nav">
+      <a href="index.html#works">WORKS</a>
+      <a href="index.html#profile">PROFILE</a>
+      <a href="index.html#contact" class="header__contact-btn">CONTACT</a>
+    </nav>
+
+    <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <!-- モバイルメニュー -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html#works" class="mobile-menu__link">WORKS</a>
+    <a href="index.html#profile" class="mobile-menu__link">PROFILE</a>
+    <a href="index.html#contact">CONTACT</a>
+  </div>
+
+  <!-- ============================================
+       ページタイトルエリア
+       ============================================ -->
+  <div class="page-hero fade-in">
+    <p class="page-hero__label">SNS Design</p>
+    <h1 class="page-hero__title">SNS Design</h1>
+    <p class="page-hero__client">Original Works — 2025</p>
+    <p class="page-hero__desc">架空のクライアントを想定したSNS投稿デザインをまとめています。投稿の目的やターゲットに合わせて、デザインのトーンや情報の見せ方を使い分けました。</p>
+    <div class="page-hero__divider"></div>
+  </div>
+
+  <!-- ============================================
+       作品01：葡萄ヶ丘ワイナリー Instagram
+       ============================================ -->
+  <div class="work-section fade-in">
+    <p class="work-section__label">01</p>
+    <h2 class="work-section__title">Instagram — 葡萄ヶ丘ワイナリー</h2>
+    <p class="work-section__text">ワイナリーの公式Instagramを想定し、3種類の投稿をデザインしました。イベント告知・新商品紹介・日常風景と、運用に必要な投稿パターンをカバーしています。ブランドカラーと統一したトーンで、フィード全体に一貫した世界観が出るよう意識しました。キャプション文とハッシュタグも合わせて制作しています。</p>
+    <div class="work-section__tools">
+      <span class="work-section__tool-tag">Canva</span>
+      <span class="work-section__tool-tag">Figma</span>
+    </div>
+
+    <!-- 3枚の投稿画像を横に並べる -->
+    <div class="work-section__images work-section__images--sns">
+      <img src="images/frame-1.png" alt="秋の収穫祭 イベント告知" class="work-section__img">
+      <img src="images/frame-2.png" alt="ぶどう畑 日常風景" class="work-section__img">
+      <img src="images/frame-3.png" alt="ヌーヴォー 新商品紹介" class="work-section__img">
+    </div>
+  </div>
+
+  <!-- ============================================
+       ホームに戻るセクション
+       ============================================ -->
+  <div class="back-section fade-in">
+    <p class="back-section__text">Portfolio</p>
+    <h2 class="back-section__title">Back to Works</h2>
+    <a href="index.html#works" class="back-btn">
+      <span class="back-btn__arrow">←</span>
+      ホームに戻る
+    </a>
+  </div>
+
+  <!-- フッター -->
+  <footer class="footer">
+    <span class="footer__logo">Monami Kudo</span>
+    <span class="footer__copy">© 2025 Monami Kudo. All rights reserved.</span>
+  </footer>
+
+  <script src="work-sns.js" defer></script>
+
+</body>
+</html>

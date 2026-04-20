@@ -1,0 +1,510 @@
+/* ============================================
+   CSS変数（ホームと同じ色・フォントを使って統一感を出す）
+   :root（ルート）= HTMLの最上位要素。ここに変数を定義すると全体で使える
+   var()（バー）= 変数を呼び出す関数。var(--color-bg) で #FAFAF7 を取得
+   ============================================ */
+:root {
+  --color-bg: #FAFAF7;           /* 背景色（少しクリームがかった白） */
+  --color-text: #3E2C23;         /* メインの文字色（ダークブラウン） */
+  --color-text-light: #8C7B6B;   /* 薄い文字色（サブテキスト用） */
+  --color-accent: #6B4C3B;       /* アクセントカラー（ブラウン） */
+  --color-border: #D6CEC6;       /* 線の色（薄いベージュ） */
+  --color-section-bg: #F3EDE7;   /* セクション背景色（薄いベージュ） */
+  --color-dark: #2C2220;         /* ダークカラー（フッター・メニュー用） */
+  --color-cta-bg: #5C3D2E;       /* CTAボタンの背景色 */
+  --color-white: #FFFFFF;
+
+  --font-display: 'Cormorant Garamond', serif;  /* 英語見出し用フォント */
+  --font-body: 'Noto Sans JP', sans-serif;       /* 日本語本文用フォント */
+
+  --max-width: 800px; /* ホームより狭くして読みやすく */
+}
+
+/* ============================================
+   リセット（ブラウザのデフォルトスタイルを統一）
+   * = すべての要素に適用
+   ============================================ */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* paddingとborderをwidth/heightに含める */
+}
+
+html {
+  scroll-behavior: smooth; /* ページ内リンクのスムーズスクロール */
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.8;
+  font-weight: 300;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased; /* フォントを滑らかに表示 */
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;        /* inherit（インヘリット）= 親要素の色を引き継ぐ */
+  text-decoration: none; /* 下線を消す */
+}
+
+/* ============================================
+   ヘッダー（ホームと同じスタイル）
+   position: fixed（フィクスド）= 画面上部に固定
+   ============================================ */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;          /* z-index（ズィー・インデックス）= 重なり順。数字が大きいほど前面 */
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between; /* 左右に分散配置 */
+  align-items: center;            /* 縦方向中央揃え */
+  background-color: rgba(250, 250, 247, 0.95);
+  backdrop-filter: blur(10px);    /* 背景をぼかすガラス効果 */
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header__logo {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--color-text);
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+  gap: 32px; /* gap（ギャップ）= 各リンクの間隔 */
+}
+
+.header__nav a {
+  font-family: var(--font-display);
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  color: var(--color-text);
+  transition: opacity 0.3s ease; /* 透明度の変化をなめらかに */
+}
+
+.header__nav a:hover {
+  opacity: 0.6; /* ホバー時に少し薄くする */
+}
+
+/* CONTACTボタン（ヘッダー右端） */
+.header__contact-btn {
+  padding: 8px 20px;
+  border: 1px solid var(--color-text);
+  transition: all 0.3s ease;
+}
+
+.header__contact-btn:hover {
+  background-color: var(--color-text);
+  color: var(--color-white) !important;
+  opacity: 1 !important;
+}
+
+/* ============================================
+   ハンバーガーメニュー（スマホ用）
+   display: none（ノン）= 初期状態は非表示（PCでは見えない）
+   ============================================ */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer; /* cursor: pointer（カーソル：ポインター）= 指マークに変える */
+  z-index: 1100;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+/* ハンバーガーの3本線 */
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background-color: var(--color-text);
+  transition: all 0.3s ease;
+}
+
+/* ×マークへの変形（activeクラスが付いた時） */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* モバイルメニュー（全画面） */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; /* vh（ビューポート・ハイト）= 画面の高さの100% */
+  background-color: var(--color-dark);
+  z-index: 1050;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 40px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.mobile-menu.active {
+  display: flex;
+  opacity: 1;
+}
+
+.mobile-menu a {
+  font-family: var(--font-display);
+  font-size: 18px;
+  letter-spacing: 0.2em;
+  color: var(--color-border);
+  transition: color 0.3s ease;
+}
+
+.mobile-menu a:hover {
+  color: var(--color-white);
+}
+
+/* ============================================
+   ページタイトルエリア（ヘッダーの下）
+   padding-top（パディング・トップ）= 上の内側余白。ヘッダー分だけ下げる
+   ============================================ */
+.page-hero {
+  padding-top: 140px;
+  padding-bottom: 60px;
+  padding-left: 40px;
+  padding-right: 40px;
+  max-width: var(--max-width);
+  margin: 0 auto; /* margin: 0 auto（マージン：0 オート）= 左右中央揃え */
+}
+
+/* "Banner" の小見出し */
+.page-hero__label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--color-text-light);
+  margin-bottom: 16px;
+  text-transform: uppercase; /* uppercase（アッパーケース）= 小文字を大文字に変換 */
+}
+
+/* 小見出しの左の横線 */
+.page-hero__label::before {
+  content: '';         /* content（コンテント）= 疑似要素の中身（空文字で線だけ表示） */
+  display: block;
+  width: 30px;
+  height: 1px;
+  background-color: var(--color-text-light);
+}
+
+/* メインタイトル */
+.page-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 56px); /* clamp（クランプ）= 最小・推奨・最大でサイズ変化 */
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.2;
+  margin-bottom: 32px;
+  color: var(--color-text);
+}
+
+/* クライアント名・年 */
+.page-hero__client {
+  font-family: var(--font-display);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: var(--color-text-light);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+/* 概要文 */
+.page-hero__desc {
+  font-size: 14px;
+  line-height: 2;
+  color: var(--color-text);
+  max-width: 600px;
+}
+
+/* 区切り線 */
+.page-hero__divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-border);
+  margin-top: 48px;
+}
+
+/* ============================================
+   作品詳細セクション（各作品のブロック）
+   ============================================ */
+.work-section {
+  padding: 60px 40px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  border-bottom: 1px solid var(--color-border); /* 下の区切り線 */
+}
+
+/* 最後のセクションは区切り線なし */
+.work-section:last-of-type {
+  border-bottom: none;
+}
+
+/* 番号（01, 02, 03） */
+.work-section__label {
+  font-family: var(--font-display);
+  font-size: 28px;
+  letter-spacing: 0.2em;
+  color: var(--color-text-light);
+  margin-bottom: 12px;
+}
+
+/* 作品タイトル */
+.work-section__title {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 400;
+  font-style: italic;
+  margin-bottom: 20px;
+  color: var(--color-text);
+}
+
+/* 説明文 */
+.work-section__text {
+  font-size: 13px;
+  line-height: 2;
+  color: var(--color-text);
+  margin-bottom: 12px;
+}
+
+/* 使用ツールのタグ一覧 */
+.work-section__tools {
+  display: flex;
+  flex-wrap: wrap; /* flex-wrap: wrap（フレックス・ラップ）= はみ出たら折り返す */
+  gap: 8px;
+  margin-bottom: 36px;
+  margin-top: 16px;
+}
+
+/* 各ツールタグ */
+.work-section__tool-tag {
+  font-size: 11px;
+  padding: 4px 12px;
+  border: 1px solid var(--color-border);
+  letter-spacing: 0.05em;
+  color: var(--color-text-light);
+}
+
+/* 仮の画像プレースホルダー（画像がない場合） */
+.work-section__placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 9; /* aspect-ratio（アスペクト・レシオ）= 縦横比 */
+  background-color: var(--color-section-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 13px;
+  color: var(--color-text-light);
+  letter-spacing: 0.1em;
+}
+
+/* ============================================
+   バナー専用：参考＋トレースを横並びにするレイアウト
+   display: grid（グリッド）= 格子状に並べるレイアウト
+   grid-template-columns（グリッド・テンプレート・カラムズ）= 列の設定
+   ============================================ */
+.banner-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 1fr 1fr = 2列を均等に分割 */
+  gap: 24px;                       /* 列と列の間の余白 */
+}
+
+/* 各バナー（参考／トレース）のブロック */
+.banner-pair__item {}
+
+/* 「参考バナー」「トレースバナー」のラベル */
+.banner-pair__label {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--color-text-light);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+/* バナーの画像 */
+.banner-pair__img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ============================================
+   ホームに戻るセクション
+   text-align: center（テキスト・アライン：センター）= 文字を中央揃え
+   ============================================ */
+.back-section {
+  padding: 80px 40px 100px;
+  text-align: center;
+  background-color: var(--color-section-bg);
+}
+
+.back-section__text {
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--color-text-light);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.back-section__title {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--color-text);
+  margin-bottom: 32px;
+}
+
+/* 戻るボタン */
+.back-btn {
+  display: inline-flex; /* inline-flex（インライン・フレックス）= 横並びボタン */
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: var(--color-white);
+  background-color: var(--color-cta-bg);
+  padding: 16px 40px;
+  transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+  background-color: var(--color-text);
+}
+
+.back-btn__arrow {
+  font-size: 16px;
+  transition: transform 0.3s ease;
+}
+
+.back-btn:hover .back-btn__arrow {
+  transform: translateX(-4px); /* translateX（トランスレートX）= 左に4px移動 */
+}
+
+/* ============================================
+   フッター（ホームと同じ）
+   ============================================ */
+.footer {
+  background-color: var(--color-dark);
+  color: var(--color-border);
+  padding: 30px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__logo {
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  font-style: italic;
+}
+
+.footer__copy {
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: rgba(214, 206, 198, 0.6);
+}
+
+/* ============================================
+   フェードインアニメーション（ホームと同じ）
+   opacity（オパシティ）= 透明度。0が透明、1が不透明
+   transform（トランスフォーム）= 要素を変形させる
+   translateY（トランスレートY）= Y軸（縦）方向に移動
+   ============================================ */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px); /* 少し下の位置からスタート */
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* .visible クラスが付いた時に表示（JSで追加） */
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================
+   レスポンシブ対応（タブレット・スマホ：768px以下）
+   @media（メディア）= 画面幅に応じてスタイルを切り替える
+   max-width: 768px = 画面幅が768px以下の時に適用
+   ============================================ */
+@media (max-width: 768px) {
+
+  .header {
+    padding: 16px 20px;
+  }
+
+  /* PC用ナビを非表示にしてハンバーガーを表示 */
+  .header__nav {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .page-hero {
+    padding-top: 100px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .work-section {
+    padding: 48px 24px;
+  }
+
+  /* スマホでは参考・トレースを縦に並べる（横並びだと小さすぎるため） */
+  .banner-pair {
+    grid-template-columns: 1fr; /* 1列に変更 */
+    gap: 16px;
+  }
+
+  .back-section {
+    padding: 60px 24px 80px;
+  }
+
+  .footer {
+    flex-direction: column; /* column（カラム）= 縦並びに変更 */
+    gap: 12px;
+    text-align: center;
+    padding: 24px 20px;
+  }
+}

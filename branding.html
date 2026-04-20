@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Branding | Monami Kudo Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================
+       CSS変数（ホームと同じ色・フォントを使う）
+       ============================================ */
+    :root {
+      --color-bg: #FAFAF7;
+      --color-text: #3E2C23;
+      --color-text-light: #8C7B6B;
+      --color-accent: #6B4C3B;
+      --color-border: #D6CEC6;
+      --color-section-bg: #F3EDE7;
+      --color-dark: #2C2220;
+      --color-cta-bg: #5C3D2E;
+      --color-white: #FFFFFF;
+      --font-display: 'Cormorant Garamond', serif;
+      --font-body: 'Noto Sans JP', sans-serif;
+      --max-width: 800px; /* ホームより狭くして読みやすく */
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--color-text);
+      background-color: var(--color-bg);
+      line-height: 1.8;
+      font-weight: 300;
+      font-size: 14px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ============================================
+       ヘッダー（ホームと同じ）
+       ============================================ */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(250, 250, 247, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .header__logo {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      color: var(--color-text);
+    }
+
+    .header__nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .header__nav a {
+      font-family: var(--font-display);
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      color: var(--color-text);
+      transition: opacity 0.3s ease;
+    }
+
+    .header__nav a:hover {
+      opacity: 0.6;
+    }
+
+    .header__contact-btn {
+      padding: 8px 20px;
+      border: 1px solid var(--color-text);
+      transition: all 0.3s ease;
+    }
+
+    .header__contact-btn:hover {
+      background-color: var(--color-text);
+      color: var(--color-white) !important;
+      opacity: 1 !important;
+    }
+
+    /* ハンバーガーメニュー（スマホ用） */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      z-index: 1100;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background-color: var(--color-text);
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* モバイルメニュー */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: var(--color-dark);
+      z-index: 1050;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 40px;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .mobile-menu.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .mobile-menu a {
+      font-family: var(--font-display);
+      font-size: 18px;
+      letter-spacing: 0.2em;
+      color: var(--color-border);
+      transition: color 0.3s ease;
+    }
+
+    .mobile-menu a:hover {
+      color: var(--color-white);
+    }
+
+    /* ============================================
+       ページタイトルエリア（ヘッダーの下）
+       ============================================ */
+    .page-hero {
+      /* padding-top（パディング・トップ）= 上の内側の余白。ヘッダーの高さ分（80px）下げる */
+      padding-top: 140px;
+      padding-bottom: 60px;
+      padding-left: 40px;
+      padding-right: 40px;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .page-hero__label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-display);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: var(--color-text-light);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+
+    .page-hero__label::before {
+      content: '';
+      display: block;
+      width: 30px;
+      height: 1px;
+      background-color: var(--color-text-light);
+    }
+
+    .page-hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.2;
+      margin-bottom: 32px;
+      color: var(--color-text);
+    }
+
+    /* クライアント名と概要 */
+    .page-hero__client {
+      font-family: var(--font-display);
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      color: var(--color-text-light);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    .page-hero__desc {
+      font-size: 14px;
+      line-height: 2;
+      color: var(--color-text);
+      max-width: 600px;
+    }
+
+    /* ページタイトルエリアの下の区切り線 */
+    .page-hero__divider {
+      width: 100%;
+      height: 1px;
+      background-color: var(--color-border);
+      margin-top: 48px;
+    }
+
+    /* ============================================
+       作品詳細セクション（各制作物のブロック）
+       ============================================ */
+    .work-section {
+      padding: 60px 40px;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      /* border-bottom（ボーダー・ボトム）= 下の区切り線 */
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    /* 最後のセクションは区切り線なし */
+    .work-section:last-of-type {
+      border-bottom: none;
+    }
+
+    /* 各セクションの見出し（【ロゴ】など） */
+    .work-section__label {
+      font-family: var(--font-display);
+      font-size: 28px;
+      letter-spacing: 0.2em;
+      color: var(--color-text-light);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .work-section__title {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 3vw, 28px);
+      font-weight: 400;
+      font-style: italic;
+      margin-bottom: 20px;
+      color: var(--color-text);
+    }
+
+    /* 説明文 */
+    .work-section__text {
+      font-size: 13px;
+      line-height: 2;
+      color: var(--color-text);
+      margin-bottom: 12px;
+    }
+
+    /* 使用ツールの表示 */
+    .work-section__tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 36px;
+      margin-top: 16px;
+    }
+
+    .work-section__tool-tag {
+      font-size: 11px;
+      padding: 4px 12px;
+      border: 1px solid var(--color-border);
+      letter-spacing: 0.05em;
+      color: var(--color-text-light);
+    }
+
+    /* 画像エリア（1列で縦に並べる） */
+    .work-section__images {
+      display: flex;
+      flex-direction: column; /* column（カラム）= 縦方向に並べる */
+      gap: 20px;
+    }
+
+    /* 実際の画像 */
+    .work-section__img {
+      width: 80%;
+      height: auto;
+      display: block;
+    }
+
+    /* 仮の画像プレースホルダー（画像がない場合に表示） */
+    .work-section__placeholder {
+      width: 100%;
+      /* aspect-ratio（アスペクト・レシオ）= 縦横比。16:9は横長の標準的な比率 */
+      aspect-ratio: 16 / 9;
+      background-color: var(--color-section-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 13px;
+      color: var(--color-text-light);
+      letter-spacing: 0.1em;
+    }
+
+    /* 縦長画像用のプレースホルダー（名刺など） */
+    .work-section__placeholder--tall {
+      aspect-ratio: 3 / 2;
+    }
+
+    /* ============================================
+       LPセクション専用（サイトリンクボタン）
+       ============================================ */
+    .work-section__link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-display);
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      color: var(--color-text);
+      border: 1px solid var(--color-border);
+      padding: 12px 24px;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .work-section__link-btn:hover {
+      background-color: var(--color-text);
+      color: var(--color-white);
+      border-color: var(--color-text);
+    }
+
+    /* ============================================
+       ホームに戻るボタンエリア
+       ============================================ */
+    .back-section {
+      padding: 80px 40px 100px;
+      text-align: center;
+      background-color: var(--color-section-bg);
+    }
+
+    .back-section__text {
+      font-family: var(--font-display);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: var(--color-text-light);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    .back-section__title {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 3vw, 32px);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--color-text);
+      margin-bottom: 32px;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      color: var(--color-white);
+      background-color: var(--color-cta-bg);
+      padding: 16px 40px;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background-color: var(--color-text);
+    }
+
+    .back-btn__arrow {
+      font-size: 16px;
+      transition: transform 0.3s ease;
+    }
+
+    .back-btn:hover .back-btn__arrow {
+      /* translateX（トランスレート・エックス）= X軸（横）方向に移動 */
+      transform: translateX(-4px); /* 左に4px移動（← 戻るボタンなので左向き） */
+    }
+
+    /* ============================================
+       フッター（ホームと同じ）
+       ============================================ */
+    .footer {
+      background-color: var(--color-dark);
+      color: var(--color-border);
+      padding: 30px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer__logo {
+      font-family: var(--font-display);
+      font-size: 14px;
+      letter-spacing: 0.05em;
+      font-style: italic;
+    }
+
+    .footer__copy {
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      color: rgba(214, 206, 198, 0.6);
+    }
+
+    /* ============================================
+       フェードインアニメーション（ホームと同じ）
+       ============================================ */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+
+
+    /* ロゴ画像のサイズ調整・横並び */
+.logo-grid {
+  display: flex;
+  flex-direction: row;     /* row（ロウ）= 横方向に並べる */
+  gap: 40px;
+  align-items: center;
+}
+
+.logo-grid .work-section__img {
+  width: 45%;              /* 横幅を45%に制限 */
+  height: auto;            /* 高さは自動（縦横比を保つ） */
+  flex-shrink: 0;          /* flex-shrink（フレックス・シュリンク）= 画像が縮まないようにする */
+}
+
+
+    /* ============================================
+       レスポンシブ対応（スマホ：768px以下）
+       ============================================ */
+    @media (max-width: 768px) {
+      .header {
+        padding: 16px 20px;
+      }
+
+      .header__nav {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .page-hero {
+        padding-top: 100px;
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+
+      .work-section {
+        padding: 48px 24px;
+      }
+
+      .back-section {
+        padding: 60px 24px 80px;
+      }
+
+      .footer {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+        padding: 24px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================================
+       ヘッダー
+       ============================================ -->
+  <header class="header" id="header">
+    <a href="index.html" class="header__logo">Monami Kudo</a>
+
+    <nav class="header__nav">
+      <a href="index.html#works">WORKS</a>
+      <a href="index.html#profile">PROFILE</a>
+      <a href="index.html#contact" class="header__contact-btn">CONTACT</a>
+    </nav>
+
+    <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <!-- モバイルメニュー -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html#works" class="mobile-menu__link">WORKS</a>
+    <a href="index.html#profile" class="mobile-menu__link">PROFILE</a>
+    <a href="index.html#contact">CONTACT</a>
+  </div>
+
+  <!-- ============================================
+       ページタイトルエリア
+       ============================================ -->
+  <div class="page-hero fade-in">
+    <p class="page-hero__label">Branding</p>
+    <h1 class="page-hero__title">葡萄ヶ丘ワイナリー</h1>
+    <p class="page-hero__client">Architecture Client Proposal — 2025</p>
+    <p class="page-hero__desc">大阪府柏原市の架空のワイナリーを想定し、ブランドに必要な制作物を一式デザインしました。ロゴ、名刺、ポスター、Webサイト、SNS投稿まで、ひとつの事業者に対してトータルで提案・制作する力をお見せできればと考えています。</p>
+    <div class="page-hero__divider"></div>
+  </div>
+
+  <!-- ============================================
+       ロゴ
+       ============================================ -->
+  <div class="work-section fade-in">
+    <p class="work-section__label">01</p>
+    <h2 class="work-section__title">Logo</h2>
+    <p class="work-section__text">架空のワイナリーのロゴデザイン。一筆描きのワイングラスで、ナチュラルで温かみのある雰囲気を表現しました。縦並び・横並びの2パターンを制作。</p>
+    <div class="work-section__tools">
+      <span class="work-section__tool-tag">Photoshop</span>
+      <span class="work-section__tool-tag">Procreate</span>
+    </div>
+
+    <div class="work-section__images logo-grid">
+      <!-- 画像が用意できたら下のコメントを外して使う -->
+        <img src="images/budougaoka-logo2.png" alt="葡萄ヶ丘ワイナリー ロゴ 縦" class="work-section__img">
+        <img src="images/budougaoka-logo3.png" alt="葡萄ヶ丘ワイナリー ロゴ 横" class="work-section__img">
+    </div>
+  </div>
+
+  <!-- ============================================
+       名刺
+       ============================================ -->
+  <div class="work-section fade-in">
+    <p class="work-section__label">02</p>
+    <h2 class="work-section__title">Business Card</h2>
+    <p class="work-section__text">ロゴと統一したカラーパレットで両面の名刺をデザイン。裏面には乾杯のイラストとQRコードを配置し、ブランドの世界観が伝わる仕上がりにしました。</p>
+    <div class="work-section__tools">
+      <span class="work-section__tool-tag">Photoshop</span>
+    </div>
+
+  <div class="work-section__images logo-grid">
+      <img src="images/budou.meishi.png" alt="葡萄ヶ丘ワイナリー 名刺 表" class="work-section__img">
+      <img src="images/meishi-ura.png" alt="葡萄ヶ丘ワイナリー 名刺 裏" class="work-section__img">
+    </div>
+  </div>
+
+  <!-- ============================================
+       ポスター
+       ============================================ -->
+  <div class="work-section fade-in">
+    <p class="work-section__label">03</p>
+    <h2 class="work-section__title">Poster</h2>
+    <p class="work-section__text">秋の収穫祭をテーマにしたA4イベント告知ポスター。写真・キャッチコピー・イベント情報の優先順位を意識してレイアウトしました。</p>
+    <div class="work-section__tools">
+      <span class="work-section__tool-tag">Canva</span>
+    </div>
+
+    <div class="work-section__images">
+      <img src="images/Instagram-1.png" alt="葡萄ヶ丘ワイナリー 収穫祭ポスター" class="work-section__img">
+    </div>
+  </div>
+
+  <!-- ============================================
+       Instagram投稿
+       ============================================ -->
+  <div class="work-section fade-in">
+    <p class="work-section__label">04</p>
+    <h2 class="work-section__title">Instagram</h2>
+    <p class="work-section__text">ワイナリーの公式Instagramを想定し、3種類の投稿をデザイン。イベント告知・新商品紹介・日常風景と、運用に必要な投稿パターンをカバーしました。キャプション文とハッシュタグも合わせて制作しています。</p>
+    <div class="work-section__tools">
+      <span class="work-section__tool-tag">Canva</span>
+      <span class="work-section__tool-tag">Figma</span>
+    </div>
+
+    <div class="work-section__images">
+     <img src="images/frame-1.png" alt="Instagram イベント告知" class="work-section__img">
+     <img src="images/frame-2.png" alt="Instagram 新商品紹介" class="work-section__img">
+     <img src="images/frame-3.png" alt="Instagram 日常風景" class="work-section__img">
+    </div>
+  </div>
+
+  <!-- ============================================
+       バナー
+       ============================================ -->
+  <div class="work-section fade-in">
+    <p class="work-section__label">05</p>
+    <h2 class="work-section__title">Banner</h2>
+    <p class="work-section__text">ワイナリーのWebサイトやSNSで使用するバナーをデザイン。ブランドカラーとロゴを統一して使用し、視認性と世界観を両立した仕上がりにしました。</p>
+    <div class="work-section__tools">
+      <span class="work-section__tool-tag">Photoshop</span>
+      <span class="work-section__tool-tag">Canva</span>
+    </div>
+
+    <div class="work-section__images">
+      <!-- 画像が用意できたら下のコメントを外して使う -->
+      <img src="images/budou-banner.png" alt="葡萄ヶ丘ワイナリー バナー1" class="work-section__img">  
+    </div>
+  </div>
+
+  <!-- ============================================
+       LP（ランディングページ）
+       ============================================ -->
+  <div class="work-section fade-in">
+    <p class="work-section__label">06</p>
+    <h2 class="work-section__title">Landing Page</h2>
+    <p class="work-section__text">架空のワイナリーの公式LPをデザイン・構築しました。ロゴ・名刺・ポスター・SNS投稿と統一したカラーパレットでブランド全体の一貫性を意識しています。Figmaでデザインした後、HTML/CSSで構築。落ち着いた大人の雰囲気になるよう、余白を多めにとったレイアウトにしました。</p>
+    <div class="work-section__tools">
+      <span class="work-section__tool-tag">Figma</span>
+      <span class="work-section__tool-tag">Photoshop</span>
+      <span class="work-section__tool-tag">HTML / CSS</span>
+    </div>
+
+    <div class="work-section__images">
+      <img src="images/lp.png" alt="LP ファーストビュー" class="work-section__img">
+    </div>
+
+    <!-- 架空サイトへのリンクボタン -->
+    <a href="https://mona07240724.github.io/budougaoka-winery/" target="_blank" class="work-section__link-btn">
+      View Live Site →
+    </a>
+  </div>
+
+  <!-- ============================================
+       ホームに戻るセクション
+       ============================================ -->
+  <div class="back-section fade-in">
+    <p class="back-section__text">Portfolio</p>
+    <h2 class="back-section__title">Back to Works</h2>
+    <a href="index.html#works" class="back-btn">
+      <span class="back-btn__arrow">←</span>
+      ホームに戻る
+    </a>
+  </div>
+
+  <!-- ============================================
+       フッター
+       ============================================ -->
+  <footer class="footer">
+    <span class="footer__logo">Monami Kudo</span>
+    <span class="footer__copy">© 2025 Monami Kudo. All rights reserved.</span>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // ハンバーガーメニューの開閉
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+      if (mobileMenu.classList.contains('active')) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+    });
+
+    // モバイルメニュー内のリンクをクリックしたら閉じる
+    const mobileLinks = document.querySelectorAll('.mobile-menu a');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // フェードインアニメーション
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    fadeElements.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

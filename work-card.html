@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Card | Monami Kudo Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="work-card.css">
+</head>
+
+<body>
+
+  <!-- ============================================
+       ヘッダー
+       ============================================ -->
+  <header class="header" id="header">
+    <a href="index.html" class="header__logo">Monami Kudo</a>
+
+    <nav class="header__nav">
+      <a href="index.html#works">WORKS</a>
+      <a href="index.html#profile">PROFILE</a>
+      <a href="index.html#contact" class="header__contact-btn">CONTACT</a>
+    </nav>
+
+    <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <!-- モバイルメニュー -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html#works" class="mobile-menu__link">WORKS</a>
+    <a href="index.html#profile" class="mobile-menu__link">PROFILE</a>
+    <a href="index.html#contact">CONTACT</a>
+  </div>
+
+  <!-- ============================================
+       ページタイトルエリア
+       ============================================ -->
+  <div class="page-hero fade-in">
+    <p class="page-hero__label">Business Card</p>
+    <h1 class="page-hero__title">Card Design</h1>
+    <p class="page-hero__client">Original Works — 2025</p>
+    <p class="page-hero__desc">架空のクライアントを想定した名刺デザインをまとめています。業種やブランドの雰囲気に合わせて、配色・レイアウト・書体をそれぞれ使い分けました。</p>
+    <div class="page-hero__divider"></div>
+  </div>
+
+  <!-- ============================================
+       作品01：Webデザイナー名刺
+       ============================================ -->
+  <div class="work-section fade-in">
+    <p class="work-section__label">01</p>
+    <h2 class="work-section__title">Designer Card</h2>
+    <p class="work-section__text">自分自身のWebデザイナー名刺です。アースカラーの有機的な図形を組み合わせたアート系のレイアウトで、個性と親しみやすさを表現しました。縦向きの表面にはQRコードとSNS情報を、裏面にはシンプルに名前と肩書きを配置しています。</p>
+    <div class="work-section__tools">
+      <span class="work-section__tool-tag">Illustrator</span>
+    </div>
+
+    <div class="work-section__images card-grid">
+      <!-- 画像が別々の場合はこちらを使う -->
+       <img src="images/meishi-01.png" alt="デザイナー名刺 表" class="work-section__img">
+      <img src="images/meishi-02.png" alt="デザイナー名刺 裏" class="work-section__img">
+    </div>
+  </div>
+
+  <!-- ============================================
+       作品02：コンサルティング会社名刺
+       ============================================ -->
+  <div class="work-section fade-in">
+    <p class="work-section__label">02</p>
+    <h2 class="work-section__title">Corporate Card</h2>
+    <p class="work-section__text">架空のコンサルティング会社「Next Strategy Inc.」の名刺です。ネイビーブルーを基調に、余白を活かしたシンプルで信頼感のあるデザインを目指しました。表面は連絡先情報を整然と並べた清潔感のあるレイアウト、裏面はブランドカラーで統一しています。</p>
+    <div class="work-section__tools">
+      <span class="work-section__tool-tag">Canva</span>
+    </div>
+
+    <div class="work-section__images card-grid">
+      <img src="images/1.png" alt="Next Strategy Inc. 名刺 表" class="work-section__img">
+      <img src="images/2.png" alt="Next Strategy Inc. 名刺 裏" class="work-section__img">
+    </div>
+  </div>
+
+  <!-- ============================================
+       ホームに戻るセクション
+       ============================================ -->
+  <div class="back-section fade-in">
+    <p class="back-section__text">Portfolio</p>
+    <h2 class="back-section__title">Back to Works</h2>
+    <a href="index.html#works" class="back-btn">
+      <span class="back-btn__arrow">←</span>
+      ホームに戻る
+    </a>
+  </div>
+
+  <!-- フッター -->
+  <footer class="footer">
+    <span class="footer__logo">Monami Kudo</span>
+    <span class="footer__copy">© 2025 Monami Kudo. All rights reserved.</span>
+  </footer>
+
+  <script src="work-card.js" defer></script>
+
+</body>
+</html>

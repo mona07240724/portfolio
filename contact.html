@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Monami Kudo Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="contact.css">
+</head>
+
+<body>
+
+  <!-- ============================================
+       ヘッダー
+       ============================================ -->
+  <header class="header" id="header">
+    <a href="index.html" class="header__logo">Monami Kudo</a>
+
+    <nav class="header__nav">
+      <a href="index.html#works">WORKS</a>
+      <a href="index.html#profile">PROFILE</a>
+      <a href="index.html#contact" class="header__contact-btn">CONTACT</a>
+    </nav>
+
+    <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <!-- モバイルメニュー -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html#works" class="mobile-menu__link">WORKS</a>
+    <a href="index.html#profile" class="mobile-menu__link">PROFILE</a>
+    <a href="index.html#contact">CONTACT</a>
+  </div>
+
+  <!-- ============================================
+       ページタイトルエリア
+       ============================================ -->
+  <div class="page-hero fade-in">
+    <p class="page-hero__label">Get in Touch</p>
+    <h1 class="page-hero__title">Contact</h1>
+    <p class="page-hero__desc">お仕事のご相談・ご質問はお気軽にどうぞ。<br>通常1〜2営業日以内にご返信いたします。</p>
+    <div class="page-hero__divider"></div>
+  </div>
+
+  <!-- ============================================
+       お問い合わせフォーム
+       action（アクション）= フォームの送信先URL
+       method="POST"（メソッド：ポスト）= データを送信する方式
+       ============================================ -->
+  <div class="contact-section fade-in">
+    <form
+      class="contact-form"
+      action="https://formspree.io/f/mkokzvnk"
+      method="POST"
+    >
+
+      <!-- お名前 -->
+      <div class="form-group">
+        <label class="form-label" for="name">
+          お名前
+          <span class="form-label__required">必須</span>
+        </label>
+        <!-- required（リクワイアード）= 入力必須にする -->
+        <input
+          class="form-input"
+          type="text"
+          id="name"
+          name="name"
+          placeholder="山田 花子"
+          required
+        >
+      </div>
+
+      <!-- メールアドレス -->
+      <div class="form-group">
+        <label class="form-label" for="email">
+          メールアドレス
+          <span class="form-label__required">必須</span>
+        </label>
+        <!-- type="email"（タイプ：メール）= メール形式かチェックしてくれる -->
+        <input
+          class="form-input"
+          type="email"
+          id="email"
+          name="email"
+          placeholder="example@email.com"
+          required
+        >
+      </div>
+
+      <!-- お問い合わせ種別 -->
+      <div class="form-group">
+        <label class="form-label" for="type">
+          お問い合わせ種別
+        </label>
+        <!-- select（セレクト）= プルダウンメニュー -->
+        <select class="form-input form-select" id="type" name="type">
+          <option value="">選択してください</option>
+          <option value="お仕事のご依頼">お仕事のご依頼</option>
+          <option value="お見積もりのご相談">お見積もりのご相談</option>
+          <option value="その他のご質問">その他のご質問</option>
+        </select>
+      </div>
+
+      <!-- メッセージ -->
+      <div class="form-group">
+        <label class="form-label" for="message">
+          メッセージ
+          <span class="form-label__required">必須</span>
+        </label>
+        <!-- textarea（テキストエリア）= 複数行のテキスト入力欄 -->
+        <textarea
+          class="form-input form-textarea"
+          id="message"
+          name="message"
+          placeholder="お気軽にご相談ください。"
+          required
+        ></textarea>
+      </div>
+
+      <!-- 送信ボタン -->
+      <div class="form-submit">
+        <!-- type="submit"（タイプ：サブミット）= フォームを送信するボタン -->
+        <button class="submit-btn" type="submit">
+          送信する
+          <span class="submit-btn__arrow">→</span>
+        </button>
+      </div>
+
+    </form>
+  </div>
+
+  <!-- ============================================
+       送信完了メッセージ（Formspreeのリダイレクト後に表示）
+       URLに ?success=true が付いている場合に表示する
+       ============================================ -->
+  <div class="success-message" id="successMessage">
+    <p class="success-message__icon">✓</p>
+    <p class="success-message__title">送信完了しました</p>
+    <p class="success-message__text">お問い合わせありがとうございます。<br>1〜2営業日以内にご返信いたします。</p>
+    <a href="index.html" class="success-message__btn">ホームに戻る</a>
+  </div>
+
+  <!-- ============================================
+       ホームに戻るセクション
+       ============================================ -->
+  <div class="back-section fade-in">
+    <p class="back-section__text">Portfolio</p>
+    <h2 class="back-section__title">Back to Works</h2>
+    <a href="index.html#works" class="back-btn">
+      <span class="back-btn__arrow">←</span>
+      ホームに戻る
+    </a>
+  </div>
+
+  <!-- フッター -->
+  <footer class="footer">
+    <span class="footer__logo">Monami Kudo</span>
+    <span class="footer__copy">© 2025 Monami Kudo. All rights reserved.</span>
+  </footer>
+
+  <script src="contact.js" defer></script>
+
+</body>
+</html>
